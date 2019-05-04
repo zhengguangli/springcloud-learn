@@ -1,0 +1,20 @@
+
+spring:
+  application:
+    name: springcloud-consumer-config
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    config:
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server
+      fail-fast: true
+      username: root
+      password: booszy
+      profile: csdn
+server:
+  port: 8200

@@ -1,0 +1,18 @@
+server:
+  port: 8900
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: springcloud-consumer-config,springcloud-provider-config
+  clusterNameExpression: new String('default')
+#  clusterNameExpression: "'default'"
+spring:
+  application:
+    name: springcloud-turbine-dashboard
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+        service-name: springcloud-turbine-dashboard

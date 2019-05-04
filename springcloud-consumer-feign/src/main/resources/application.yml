@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: springcloud-consumer-feign
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+        service-name: springcloud-consumer-feign
+    config:
+      discovery:
+        enabled: true
+        service-id: springcloud-config-server
+      fail-fast: true
+      username: root
+      password: booszy
+      profile: csdn
+
+server:
+  port: 8201

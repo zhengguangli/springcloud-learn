@@ -1,0 +1,12 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: springcloud-zipkin-server
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+        service-name: springcloud-zipkin-server
